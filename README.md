@@ -1,9 +1,14 @@
-# README - Projeto Database: Clyvo Vet
+# Projeto Database: Clyvo Vet
 
 Este repositório contém o script completo de modelagem, estruturação e lógica procedimental (PL/SQL) desenvolvido para o Challenge 2026 – *Mastering Relational and Non-Relational Database*.
 
 ## 📋 Descrição do Projeto
 O **Clyvo Vet** é um ecossistema de gestão clínica veterinária focado na monitorização da saúde e bem-estar animal. O banco de dados foi desenhado para garantir integridade, segurança nas operações e inteligência na extração de dados clínicos.
+
+## 👩🏾‍🦱🧑🏾👧🏻 Integrantes
+* Manuela de Lacerda Soares - RM 564887 
+* Moisés Barsoti Andrade de Oliveira - RM 565049 
+* Sofia Siqueira Fontes - RM 563829      
 
 ## 🛠 Funcionalidades Implementadas
 * **Modelagem Relacional (3FN):** Estrutura normalizada que cobre clientes, pets, veterinários, históricos clínicos e agendamentos.
