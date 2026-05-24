@@ -606,17 +606,21 @@ DECLARE
     CURSOR c_analitico IS
         SELECT pet_id AS id,
                TO_CHAR(recordedAt, 'DD/MM/YYYY HH24:MI') AS dt,
-               NVL(TO_CHAR(LAG(temperature, 1) OVER (PARTITION BY pet_id ORDER BY recordedAt)), 'Início') AS ant,
+               NVL(TO_CHAR(LAG(temperature, 1) OVER (PARTITION BY pet_id ORDER BY recordedAt)), '') AS ant,
                TO_CHAR(temperature) AS atual,
-               NVL(TO_CHAR(LEAD(temperature, 1) OVER (PARTITION BY pet_id ORDER BY recordedAt)), 'Final') AS prox
+               NVL(TO_CHAR(LEAD(temperature, 1) OVER (PARTITION BY pet_id ORDER BY recordedAt)), '') AS prox
         FROM T_CLINICALHISTORY;
 BEGIN
     DBMS_OUTPUT.PUT_LINE('===== SEÇÃO 7: MONITORAMENTO ANALÍTICO DE SENSOR (LAG/LEAD) =====');
+    
     FOR r IN c_analitico LOOP
-        DBMS_OUTPUT.PUT_LINE('ID Pet: ' || r.id || ' | Data/Hora: ' || r.dt || 
-                             ' | Métrica Anterior: ' || RPAD(r.ant, 6) || 
-                             ' | Leitura Atual: ' || RPAD(r.atual, 5) || 
-                             ' | Próxima Leitura: ' || r.prox);
+        DBMS_OUTPUT.PUT_LINE(
+            'ID Pet: ' || r.id || 
+            ' | Data/Hora: ' || r.dt || 
+            ' | Métrica Anterior: ' || RPAD(r.ant, 6) || 
+            ' | Leitura Atual: ' || RPAD(r.atual, 5) || 
+            ' | Próxima Leitura: ' || r.prox
+        );
     END LOOP;
 END;
 /
